@@ -1,0 +1,34 @@
+# Gradle / Android
+.gradle/
+build/
+**/build/
+local.properties
+.idea/
+.vscode/
+*.iml
+.cxx/
+.externalNativeBuild/
+captures/
+jdk17.zip
+*.zip
+build_error*.txt
+
+# Node / Web / Backend / Frontend
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# OS Generated
+.DS_Store
+Thumbs.db

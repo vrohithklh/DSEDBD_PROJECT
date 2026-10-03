@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Smart Attendance</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_users">Users</string>
+    <string name="title_face_enrollment">Face Enrollment</string>
+    <string name="title_attendance">Attendance</string>
+    <string name="title_reports">Reports</string>
+    <string name="title_management">Management</string>
+    <string name="title_settings">Settings</string>
+</resources>

@@ -1,0 +1,58 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper to check if request is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper to check if the user is an admin
+    function isAdmin() {
+      return isAuthenticated() && 
+        (request.auth.token.role == 'ADMIN' || 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'ADMIN');
+    }
+
+    // Helper to check if the document belongs to the requesting user
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // 1. Users collection
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (isAdmin() || isOwner(userId));
+      allow write: if isAdmin();
+    }
+
+    // 2. Face Profiles (Biometric features)
+    match /faceProfiles/{userId} {
+      allow read, write: if isAdmin();
+    }
+
+    // 3. Attendance Sessions
+    match /attendanceSessions/{sessionId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // 4. Attendance Records
+    match /attendance/{attendanceId} {
+      allow read: if isAuthenticated() && (isAdmin() || resource.data.userId == request.auth.uid);
+      allow write: if isAdmin();
+    }
+    
+    // 5. Metadata configurations (classrooms, departments, subjects)
+    match /departments/{id} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+    match /classrooms/{id} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+    match /subjects/{id} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+  }
+}

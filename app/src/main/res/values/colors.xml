@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="primary">#4F46E5</color>
+    <color name="primary_variant">#3730A3</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary">#0D9488</color>
+    <color name="secondary_variant">#115E59</color>
+    <color name="on_secondary">#FFFFFF</color>
+
+    <!-- UI Background and Surface Colors -->
+    <color name="background">#F8FAFC</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="on_background">#0F172A</color>
+    <color name="on_surface">#0F172A</color>
+
+    <!-- Error/Status Colors -->
+    <color name="error">#EF4444</color>
+    <color name="success">#22C55E</color>
+    <color name="warning">#F59E0B</color>
+
+    <!-- Neutral/Muted Colors -->
+    <color name="muted_gray">#64748B</color>
+    <color name="divider_gray">#E2E8F0</color>
+    <color name="card_background">#FFFFFF</color>
+</resources>

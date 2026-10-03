@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <!-- Splash Screen -->
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.college.smartattendance.ui.SplashFragment"
+        android:label="Splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Login Screen -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.college.smartattendance.ui.auth.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_adminDashboardFragment"
+            app:destination="@id/adminDashboardFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_userDashboardFragment"
+            app:destination="@id/userDashboardFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Admin Dashboard Screen -->
+    <fragment
+        android:id="@+id/adminDashboardFragment"
+        android:name="com.college.smartattendance.ui.dashboard.AdminDashboardFragment"
+        android:label="Admin Dashboard"
+        tools:layout="@layout/fragment_admin_dashboard">
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_userListFragment"
+            app:destination="@id/userListFragment" />
+    </fragment>
+
+    <!-- Student/Employee Dashboard Screen -->
+    <fragment
+        android:id="@+id/userDashboardFragment"
+        android:name="com.college.smartattendance.ui.dashboard.UserDashboardFragment"
+        android:label="User Dashboard"
+        tools:layout="@layout/fragment_user_dashboard">
+        <action
+            android:id="@+id/action_userDashboardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_userDashboardFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <!-- Profile Screen -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.college.smartattendance.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <!-- Settings Screen -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.college.smartattendance.ui.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- User List Screen -->
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.college.smartattendance.ui.users.UserListFragment"
+        android:label="Users"
+        tools:layout="@layout/fragment_user_list">
+        <action
+            android:id="@+id/action_userListFragment_to_userDetailsFragment"
+            app:destination="@id/userDetailsFragment" />
+        <action
+            android:id="@+id/action_userListFragment_to_addUserFragment"
+            app:destination="@id/addUserFragment" />
+    </fragment>
+
+    <!-- Add/Edit User Screen -->
+    <fragment
+        android:id="@+id/addUserFragment"
+        android:name="com.college.smartattendance.ui.users.AddUserFragment"
+        android:label="Manage User"
+        tools:layout="@layout/fragment_add_user">
+        <argument
+            android:name="userId"
+            app:argType="string"
+            android:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+
+    <!-- User Details Screen -->
+    <fragment
+        android:id="@+id/userDetailsFragment"
+        android:name="com.college.smartattendance.ui.users.UserDetailsFragment"
+        android:label="User Details"
+        tools:layout="@layout/fragment_user_details">
+        <argument
+            android:name="userId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_userDetailsFragment_to_addUserFragment"
+            app:destination="@id/addUserFragment" />
+    </fragment>
+
+</navigation>
